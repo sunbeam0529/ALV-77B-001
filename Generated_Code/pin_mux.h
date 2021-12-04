@@ -7,7 +7,7 @@
 **     Version     : Component 1.2.0, Driver 1.4, CPU db: 3.00.000
 **     Repository  : SDK_S32K1xx_15
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2021-12-03, 14:12, # CodeGen: 1
+**     Date/Time   : 2021-12-04, 10:51, # CodeGen: 17
 **     Abstract    :
 **
 **     Settings    :
@@ -72,8 +72,8 @@
 **                  Data Pin 1                             : <Automatic>
 **                  Data Pin 2                             : <Automatic>
 **                  Data Pin 3                             : <Automatic>
-**                  Data Pin 4                             : <Automatic>
-**                  Data Pin 5                             : <Automatic>
+**                  Data Pin 4                             : PTA2
+**                  Data Pin 5                             : PTA3
 **                  Data Pin 6                             : PTE4
 **                  Data Pin 7                             : PTE5
 **              Peripheral Type FTFC                       : 
@@ -161,8 +161,8 @@
 **                  Direction                              : <Automatic>
 **                  Pin GPIO4                              : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin GPIO5                              : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin GPIO5                              : PTB5
+**                  Direction                              : Output
 **                  Pin GPIO6                              : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Pin GPIO7                              : <Automatic>
@@ -217,8 +217,8 @@
 **                  Direction                              : <Automatic>
 **                  Pin GPIO5                              : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin GPIO8                              : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin GPIO8                              : PTE8
+**                  Direction                              : Output
 **                  Pin GPIO9                              : <Automatic>
 **                  Direction                              : <Automatic>
 **              Peripheral Type JTAG                       : 
@@ -232,9 +232,9 @@
 **              Peripheral Type LPI2C                      : 
 **                Custom name                              : LPI2C0
 **                LPI2C0                                   : 
-**                  I2C Serial Clock Line                  : <Automatic>
+**                  I2C Serial Clock Line                  : PTB7
 **                  I2C Secondary Clock line               : <Automatic>
-**                  I2C Serial Data Line                   : <Automatic>
+**                  I2C Serial Data Line                   : PTB6
 **                  I2C Secondary Data Line                : <Automatic>
 **              Peripheral Type LPIT                       : 
 **                Custom name                              : LPIT0
@@ -454,7 +454,7 @@
 **                Pin Mux Field                            : <Automatic>
 **                Lock Field                               : <Automatic>
 **                Pull Enable Field                        : <Automatic>
-**                Pull Select Field                        : <Automatic>
+**                Pull Select Field                        : Pull Down
 **                Initial Value Field                      : <Automatic>
 **                Digital Filter Field                     : <Automatic>
 **              Pin 14: PTB5                               : 
@@ -862,7 +862,7 @@
 
 
 /*! @brief User number of configured pins */
-#define NUM_OF_CONFIGURED_PINS 2
+#define NUM_OF_CONFIGURED_PINS 8
 
 /*! @brief User configuration structure */
 extern pin_settings_config_t g_pin_mux_InitConfigArr[NUM_OF_CONFIGURED_PINS];

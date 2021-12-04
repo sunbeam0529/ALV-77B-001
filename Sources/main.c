@@ -27,6 +27,7 @@
 #include "Cpu.h"
 #include "printf.h"
 #include "ECUM.h"
+#include "PressSensor.h"
 volatile int exit_code = 0;
 flexio_uart_state_t   uartStateTX;
 flexio_device_state_t flexIODeviceState;
@@ -69,7 +70,7 @@ void _putchar(char character)
 int main(void)
 {
   /* Write your local variable definition here */
-
+	uint16_t val;
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   #ifdef PEX_RTOS_INIT
     PEX_RTOS_INIT();                   /* Initialization of the selected RTOS. Macro is defined by the RTOS component. */
@@ -87,12 +88,14 @@ int main(void)
 	//UART_SendDataBlocking(&uart_pal1_instance, (uint8_t *)testdata, 128, 1000000);
 	FLEXIO_DRV_InitDevice(INST_FLEXIO_UART1, &flexIODeviceState);
 	FLEXIO_UART_DRV_Init(INST_FLEXIO_UART1, &flexio_uart1_Config0, &uartStateTX);
-	//printf("start----------\n");
+
 	//FLEXIO_UART_DRV_SendData(&uartStateTX,testdata,128);
 	LPIT_DRV_Init(INST_LPIT1, &lpit1_InitConfig);
 	LPIT_DRV_InitChannel(INST_LPIT1, 0, &lpit1_ChnConfig0);
 	LPIT_DRV_StartTimerChannels(INST_LPIT1, (1 << 0));
 
+	PressSensorInit();
+	printf("start----------\n");
 	for(;;)
 	{
 		//FLEXIO_UART_DRV_SendDataBlocking(&uartStateTX,testdata,128,1000000);
@@ -103,7 +106,13 @@ int main(void)
 		if(TimeBase1000msFlag == 1)
 		{
 			TimeBase1000msFlag = 0;
-			FLEXIO_UART_DRV_SendDataBlocking(&uartStateTX,testdata,128,1000);
+			val = GetPressValue(1);
+			printf("press1=%d\n",val);
+            val = GetPressValue(2);
+            printf("press2=%d\n",val);
+            val = GetPressValue(3);
+            printf("press3=%d\n",val);
+			//FLEXIO_UART_DRV_SendDataBlocking(&uartStateTX,testdata,2,1000);
 		}
 	}
 

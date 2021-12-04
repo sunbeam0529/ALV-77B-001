@@ -140,5 +140,19 @@
       <EmptySection_DummyValue />
     </Events>
   </Bean>
+  <Bean name="flexio_i2c1" type="flexio_i2c">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="flexio_i2c1" />
+      <Device v="FLEXIO" />
+      <Component_version v="S32K144_SDK01" />
+    </Properties>
+    <Methods>
+      <EmptySection_DummyValue />
+    </Methods>
+    <Events>
+      <EmptySection_DummyValue />
+    </Events>
+  </Bean>
 </PE_PROJECT_SETTINGS_DOCUMENTATION>
 

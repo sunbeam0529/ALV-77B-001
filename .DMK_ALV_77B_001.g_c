@@ -368,6 +368,24 @@
         <NotCreatedByDefault>false</NotCreatedByDefault>
       </SynchronizedStaticFile>
       <SynchronizedStaticFile>
+        <SrcFileName>C:\NXP\S32DS_ARM_v2.2\eclipse\ProcessorExpert\..\..\S32DS\software\S32SDK_S32K1xx_RTM_3.0.0\platform\drivers\src\flexio\flexio_i2c_driver.c</SrcFileName>
+        <OrigSrcFileHash>{hash-not-available}</OrigSrcFileHash>
+        <ReviewedSrcFileHash>{hash-not-available}</ReviewedSrcFileHash>
+        <PrjFileName>SDK\platform\drivers\src\flexio\flexio_i2c_driver.c</PrjFileName>
+        <PrjFileHash>{hash-not-available}</PrjFileHash>
+        <NoMoreGenerated>false</NoMoreGenerated>
+        <NotCreatedByDefault>false</NotCreatedByDefault>
+      </SynchronizedStaticFile>
+      <SynchronizedStaticFile>
+        <SrcFileName>C:\NXP\S32DS_ARM_v2.2\eclipse\ProcessorExpert\..\..\S32DS\software\S32SDK_S32K1xx_RTM_3.0.0\platform\drivers\inc\flexio_i2c_driver.h</SrcFileName>
+        <OrigSrcFileHash>{hash-not-available}</OrigSrcFileHash>
+        <ReviewedSrcFileHash>{hash-not-available}</ReviewedSrcFileHash>
+        <PrjFileName>SDK\platform\drivers\inc\flexio_i2c_driver.h</PrjFileName>
+        <PrjFileHash>{hash-not-available}</PrjFileHash>
+        <NoMoreGenerated>false</NoMoreGenerated>
+        <NotCreatedByDefault>false</NotCreatedByDefault>
+      </SynchronizedStaticFile>
+      <SynchronizedStaticFile>
         <SrcFileName>C:\NXP\S32DS_ARM_v2.2\eclipse\ProcessorExpert\..\..\S32DS\software\S32SDK_S32K1xx_RTM_3.0.0\platform\devices\devassert.h</SrcFileName>
         <OrigSrcFileHash>{hash-not-available}</OrigSrcFileHash>
         <ReviewedSrcFileHash>{hash-not-available}</ReviewedSrcFileHash>
@@ -470,29 +488,31 @@
         <Line>Events</Line>
       </GenEventModules>
       <GenMethodsInEvents lines_count="0" />
-      <GenAllModules lines_count="8">
+      <GenAllModules lines_count="9">
         <Line>clockMan1</Line>
         <Line>Cpu</Line>
         <Line>dmaController1</Line>
         <Line>Events</Line>
+        <Line>flexio_i2c1</Line>
         <Line>flexio_uart1</Line>
         <Line>lpi2c1</Line>
         <Line>lpit1</Line>
         <Line>pin_mux</Line>
       </GenAllModules>
       <GenExternModules lines_count="0" />
-      <GenBeanModules lines_count="6">
+      <GenBeanModules lines_count="7">
         <Line>pin_mux</Line>
         <Line>clockMan1</Line>
         <Line>lpi2c1</Line>
         <Line>dmaController1</Line>
         <Line>flexio_uart1</Line>
         <Line>lpit1</Line>
+        <Line>flexio_i2c1</Line>
       </GenBeanModules>
     </GenFiles>
     <SignalListFile />
     <DestinationCompiler>GNUC</DestinationCompiler>
-    <ProjectModificationStamp>6</ProjectModificationStamp>
+    <ProjectModificationStamp>11</ProjectModificationStamp>
   </Options>
   <CpuID_1>
     <Generated>true</Generated>
@@ -500,7 +520,7 @@
     <GenComponentVersion>01.197</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule>Events</GenEventModule>
-    <HeaderAge>1401127554</HeaderAge>
+    <HeaderAge>1401178755</HeaderAge>
     <CodeAge>1401122140</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>3</GenNumMethods>
@@ -533,8 +553,8 @@
     <GenComponentVersion>1.2.0</GenComponentVersion>
     <GenDriverVersion>1.4</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1401123226</HeaderAge>
-    <CodeAge>1401123226</CodeAge>
+    <HeaderAge>1401181807</HeaderAge>
+    <CodeAge>1401181807</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>23</GenNumMethods>
     <PINS_DRV_Init>true</PINS_DRV_Init>
@@ -846,6 +866,44 @@
     <ExtraFile1>SDK\platform\drivers\src\lpit\lpit_hw_access.h</ExtraFile1>
     <ExtraFile2>SDK\platform\drivers\src\lpit\lpit_driver.c</ExtraFile2>
   </ComponentID_12>
+  <ComponentID_13>
+    <Generated>true</Generated>
+    <GenCompName>flexio_i2c1</GenCompName>
+    <GenComponentVersion>SDK_S32K1xx_15</GenComponentVersion>
+    <GenDriverVersion>01.00</GenDriverVersion>
+    <GenEventModule />
+    <HeaderAge>1401178755</HeaderAge>
+    <CodeAge>1401179534</CodeAge>
+    <AsemblAge>-1</AsemblAge>
+    <GenNumMethods>15</GenNumMethods>
+    <FLEXIO_DRV_InitDevice>true</FLEXIO_DRV_InitDevice>
+    <FLEXIO_DRV_DeinitDevice>true</FLEXIO_DRV_DeinitDevice>
+    <FLEXIO_DRV_Reset>true</FLEXIO_DRV_Reset>
+    <FLEXIO_I2C_DRV_MasterInit>true</FLEXIO_I2C_DRV_MasterInit>
+    <FLEXIO_I2C_DRV_MasterDeinit>true</FLEXIO_I2C_DRV_MasterDeinit>
+    <FLEXIO_I2C_DRV_MasterSetBaudRate>true</FLEXIO_I2C_DRV_MasterSetBaudRate>
+    <FLEXIO_I2C_DRV_MasterGetBaudRate>true</FLEXIO_I2C_DRV_MasterGetBaudRate>
+    <FLEXIO_I2C_DRV_MasterSetSlaveAddr>true</FLEXIO_I2C_DRV_MasterSetSlaveAddr>
+    <FLEXIO_I2C_DRV_MasterSendData>true</FLEXIO_I2C_DRV_MasterSendData>
+    <FLEXIO_I2C_DRV_MasterSendDataBlocking>true</FLEXIO_I2C_DRV_MasterSendDataBlocking>
+    <FLEXIO_I2C_DRV_MasterReceiveData>true</FLEXIO_I2C_DRV_MasterReceiveData>
+    <FLEXIO_I2C_DRV_MasterReceiveDataBlocking>true</FLEXIO_I2C_DRV_MasterReceiveDataBlocking>
+    <FLEXIO_I2C_DRV_MasterTransferAbort>true</FLEXIO_I2C_DRV_MasterTransferAbort>
+    <FLEXIO_I2C_DRV_MasterGetStatus>true</FLEXIO_I2C_DRV_MasterGetStatus>
+    <FLEXIO_I2C_DRV_GetDefaultConfig>true</FLEXIO_I2C_DRV_GetDefaultConfig>
+    <GenNumEvents>0</GenNumEvents>
+    <GenSmartUserChangesDetected_Header>false</GenSmartUserChangesDetected_Header>
+    <GenSmartUserChangesDetected_Code>false</GenSmartUserChangesDetected_Code>
+    <GenSmartUserChangesDetected_Asembl>false</GenSmartUserChangesDetected_Asembl>
+    <GenMethodPos>0</GenMethodPos>
+    <GenExtraFilesCount>6</GenExtraFilesCount>
+    <ExtraFile0>SDK\platform\drivers\inc\flexio.h</ExtraFile0>
+    <ExtraFile1>SDK\platform\drivers\inc\flexio_i2c_driver.h</ExtraFile1>
+    <ExtraFile2>SDK\platform\drivers\src\flexio\flexio_hw_access.h</ExtraFile2>
+    <ExtraFile3>SDK\platform\drivers\src\flexio\flexio_common.h</ExtraFile3>
+    <ExtraFile4>SDK\platform\drivers\src\flexio\flexio_common.c</ExtraFile4>
+    <ExtraFile5>SDK\platform\drivers\src\flexio\flexio_i2c_driver.c</ExtraFile5>
+  </ComponentID_13>
   <UsedSrcFiles>
     <SrcFile0>Drivers\interrupt_manager.src=-1</SrcFile0>
     <SrcFile1>Drivers\osifcommon\osif.drv=-1</SrcFile1>
@@ -869,35 +927,38 @@
     <SrcFile19>Drivers\S32K\S32K144_SDK01\lpit_code.drv=-1</SrcFile19>
     <SrcFile20>Drivers\S32K\HAL_Port_Bridge_V2.prg=1316652646</SrcFile20>
     <SrcFile21>Drivers\S32K\S32K144_SDK01\flexio_uart_code.drv=-1</SrcFile21>
-    <SrcFile22>Drivers\Common\InitReg32Block.prg=1316652645</SrcFile22>
-    <SrcFile23>Drivers\S32K\StaticSdk_S32K_V4.drv=1316652646</SrcFile23>
-    <SrcFile24>Drivers\Common\ToolChain_Settings.prg=1316652645</SrcFile24>
-    <SrcFile25>Drivers\Common\HeaderFreescale.h=1316652645</SrcFile25>
-    <SrcFile26>Drivers\Common\EBGNSupport\TimingLib.prg=1316652646</SrcFile26>
-    <SrcFile27>Drivers\S32K\S32_SDK_S32K\clock_manager.drv=-1</SrcFile27>
-    <SrcFile28>Drivers\Common\Header.h=1316652645</SrcFile28>
-    <SrcFile29>Drivers\sw\RTOSAdaptor\Common_RTOSAdaptor.prg=1345390891</SrcFile29>
-    <SrcFile30>Drivers\Common\Header.c=1316652645</SrcFile30>
-    <SrcFile31>Drivers\osif.src=-1</SrcFile31>
-    <SrcFile32>Drivers\sw\RTOSAdaptor\Default_RTOSAdaptor.prg=1345390891</SrcFile32>
-    <SrcFile33>Drivers\Common\WriteBlock_NotRst.prg=1316652645</SrcFile33>
-    <SrcFile34>Drivers\S32K\S32K144_SDK01\interrupt_manager.drv=1316652646</SrcFile34>
-    <SrcFile35>Drivers\S32_SDK_DMA_4CH\edma.drv=-1</SrcFile35>
-    <SrcFile36>Drivers\S32K\S32K144_SDK01\lpi2c.drv=-1</SrcFile36>
-    <SrcFile37>Drivers\Common\InitRegBlock.prg=1316652645</SrcFile37>
-    <SrcFile38>Drivers\PEx_S32K.src=1316652645</SrcFile38>
-    <SrcFile39>Drivers\Common\Static_SupportSubroutines.prg=1316652645</SrcFile39>
-    <SrcFile40>Drivers\flexio_uart.src=-1</SrcFile40>
-    <SrcFile41>Drivers\S32K\S32K144_SDK01\flexio_uart.drv=-1</SrcFile41>
-    <SrcFile42>Drivers\S32K\S32_SDK_S32K\clock_manager_code.drv=-1</SrcFile42>
-    <SrcFile43>Drivers\edma.src=-1</SrcFile43>
-    <SrcFile44>Drivers\lpi2c.src=-1</SrcFile44>
-    <SrcFile45>Drivers\Common\S32KAbstract.inc=1316652645</SrcFile45>
-    <SrcFile46>Drivers\Common\HeaderCopyright.inc=1316652645</SrcFile46>
-    <SrcFile47>Drivers\S32K\StaticSdk_S32K.drv=1316652646</SrcFile47>
-    <SrcFile48>Drivers\GlobalConfigFiles.drv=1316652645</SrcFile48>
-    <SrcFile49>Drivers\Common\Header.end=1316652645</SrcFile49>
-    <SrcFile50>Drivers\clock_manager.src=-1</SrcFile50>
+    <SrcFile22>Drivers\S32K\S32K144_SDK01\flexio_i2c.drv=-1</SrcFile22>
+    <SrcFile23>Drivers\Common\InitReg32Block.prg=1316652645</SrcFile23>
+    <SrcFile24>Drivers\S32K\StaticSdk_S32K_V4.drv=1316652646</SrcFile24>
+    <SrcFile25>Drivers\Common\ToolChain_Settings.prg=1316652645</SrcFile25>
+    <SrcFile26>Drivers\flexio_i2c.src=-1</SrcFile26>
+    <SrcFile27>Drivers\Common\HeaderFreescale.h=1316652645</SrcFile27>
+    <SrcFile28>Drivers\Common\EBGNSupport\TimingLib.prg=1316652646</SrcFile28>
+    <SrcFile29>Drivers\S32K\S32_SDK_S32K\clock_manager.drv=-1</SrcFile29>
+    <SrcFile30>Drivers\Common\Header.h=1316652645</SrcFile30>
+    <SrcFile31>Drivers\sw\RTOSAdaptor\Common_RTOSAdaptor.prg=1345390891</SrcFile31>
+    <SrcFile32>Drivers\Common\Header.c=1316652645</SrcFile32>
+    <SrcFile33>Drivers\osif.src=-1</SrcFile33>
+    <SrcFile34>Drivers\sw\RTOSAdaptor\Default_RTOSAdaptor.prg=1345390891</SrcFile34>
+    <SrcFile35>Drivers\Common\WriteBlock_NotRst.prg=1316652645</SrcFile35>
+    <SrcFile36>Drivers\S32K\S32K144_SDK01\interrupt_manager.drv=1316652646</SrcFile36>
+    <SrcFile37>Drivers\S32_SDK_DMA_4CH\edma.drv=-1</SrcFile37>
+    <SrcFile38>Drivers\S32K\S32K144_SDK01\lpi2c.drv=-1</SrcFile38>
+    <SrcFile39>Drivers\Common\InitRegBlock.prg=1316652645</SrcFile39>
+    <SrcFile40>Drivers\PEx_S32K.src=1316652645</SrcFile40>
+    <SrcFile41>Drivers\S32K\S32K144_SDK01\flexio_i2c_code.drv=-1</SrcFile41>
+    <SrcFile42>Drivers\Common\Static_SupportSubroutines.prg=1316652645</SrcFile42>
+    <SrcFile43>Drivers\flexio_uart.src=-1</SrcFile43>
+    <SrcFile44>Drivers\S32K\S32K144_SDK01\flexio_uart.drv=-1</SrcFile44>
+    <SrcFile45>Drivers\S32K\S32_SDK_S32K\clock_manager_code.drv=-1</SrcFile45>
+    <SrcFile46>Drivers\edma.src=-1</SrcFile46>
+    <SrcFile47>Drivers\lpi2c.src=-1</SrcFile47>
+    <SrcFile48>Drivers\Common\S32KAbstract.inc=1316652645</SrcFile48>
+    <SrcFile49>Drivers\Common\HeaderCopyright.inc=1316652645</SrcFile49>
+    <SrcFile50>Drivers\S32K\StaticSdk_S32K.drv=1316652646</SrcFile50>
+    <SrcFile51>Drivers\GlobalConfigFiles.drv=1316652645</SrcFile51>
+    <SrcFile52>Drivers\Common\Header.end=1316652645</SrcFile52>
+    <SrcFile53>Drivers\clock_manager.src=-1</SrcFile53>
   </UsedSrcFiles>
 </GenerationInfo_G_C>
 

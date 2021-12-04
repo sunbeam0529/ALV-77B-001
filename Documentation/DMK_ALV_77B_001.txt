@@ -183,6 +183,23 @@ Module "lpit1"     (component lpit)
    - lpit1_LPIT_DRV_GetInterruptFlagTimerChannels -Gets the current interrupt flag of timer channels.
    - lpit1_LPIT_DRV_ClearInterruptFlagTimerChannels -Clears the interrupt flag of timer channels.
 
+Module "flexio_i2c1" (component flexio_i2c)
+   - flexio_i2c1_FLEXIO_DRV_InitDevice -Initializes the FlexIO device.
+   - flexio_i2c1_FLEXIO_DRV_DeinitDevice -De-initializes the FlexIO device.
+   - flexio_i2c1_FLEXIO_DRV_Reset -Resets the FlexIO device.
+   - flexio_i2c1_FLEXIO_I2C_DRV_MasterInit -Initialize the FLEXIO_I2C master mode driver.
+   - flexio_i2c1_FLEXIO_I2C_DRV_MasterDeinit -De-initialize the FLEXIO_I2C master mode driver.
+   - flexio_i2c1_FLEXIO_I2C_DRV_MasterSetBaudRate -Set the baud rate for any subsequent I2C communication.
+   - flexio_i2c1_FLEXIO_I2C_DRV_MasterGetBaudRate -Get the currently configured baud rate.
+   - flexio_i2c1_FLEXIO_I2C_DRV_MasterSetSlaveAddr -Set the slave address for any subsequent I2C communication.
+   - flexio_i2c1_FLEXIO_I2C_DRV_MasterSendData -Perform a non-blocking send transaction on the I2C bus.
+   - flexio_i2c1_FLEXIO_I2C_DRV_MasterSendDataBlocking -Perform a blocking send transaction on the I2C bus.
+   - flexio_i2c1_FLEXIO_I2C_DRV_MasterReceiveData -Perform a non-blocking receive transaction on the I2C bus.
+   - flexio_i2c1_FLEXIO_I2C_DRV_MasterReceiveDataBlocking -Perform a blocking receive transaction on the I2C bus.
+   - flexio_i2c1_FLEXIO_I2C_DRV_MasterTransferAbort -Aborts a non-blocking I2C master transaction.
+   - flexio_i2c1_FLEXIO_I2C_DRV_MasterGetStatus -Get the status of the current non-blocking I2C master transaction.
+   - flexio_i2c1_FLEXIO_I2C_DRV_GetDefaultConfig -Returns default configuration structure for FLEXIO_I2C.
+
 Module "Cpu"       (component S32K116_48)
    - Cpu_SystemInit -This function disables the watchdog, enables FPU and the power mode protection. SystemInit is called from 
                 startup_device file.
