@@ -12,12 +12,14 @@ uint8_t ReadReg(uint8_t dev,uint8_t reg)
     {
     case 1:
         txbuf[0] = reg;
+        LPI2C_DRV_MasterSetSlaveAddr(INST_LPI2C1,0x46,false);
         ret = LPI2C_DRV_MasterSendDataBlocking(INST_LPI2C1, txbuf, 1, true, 10);
         ret = LPI2C_DRV_MasterReceiveDataBlocking(INST_LPI2C1, txbuf, 1, true, 10);
         return txbuf[0];
         break;
     case 2:
         txbuf[0] = reg;
+        FLEXIO_I2C_DRV_MasterSetSlaveAddr(&i2cMasterState,0x46);
         ret = FLEXIO_I2C_DRV_MasterSendDataBlocking(&i2cMasterState, txbuf, 1, true, 10);
         ret = FLEXIO_I2C_DRV_MasterReceiveDataBlocking(&i2cMasterState, txbuf, 1, true, 10);
         return txbuf[0];
@@ -37,10 +39,30 @@ uint8_t ReadReg(uint8_t dev,uint8_t reg)
 
 void WriteReg(uint8_t dev,uint8_t reg,uint8_t data)
 {
-    uint8_t txbuf[2];
+    uint8_t txbuf[2],ret;
     txbuf[0] = reg;
     txbuf[1] = data;
     LPI2C_DRV_MasterSendDataBlocking(INST_LPI2C1, txbuf, 2, true, 10);
+
+    switch (dev)
+    {
+    case 1:
+        LPI2C_DRV_MasterSetSlaveAddr(INST_LPI2C1,0x46,false);
+        ret = LPI2C_DRV_MasterSendDataBlocking(INST_LPI2C1, txbuf, 2, true, 10);
+        return;
+        break;
+    case 2:
+        FLEXIO_I2C_DRV_MasterSetSlaveAddr(&i2cMasterState,0x46);
+        ret = FLEXIO_I2C_DRV_MasterSendDataBlocking(&i2cMasterState, txbuf, 2, true, 10);
+        return;
+        break;
+    case 3:
+        ret = SWI2C_SendDataBlocking(0x46, txbuf, 2, true);
+        return;
+        break;
+    default:
+        break;
+    }
 }
 
 void PressSensorInit(void)

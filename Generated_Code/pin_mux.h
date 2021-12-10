@@ -7,7 +7,7 @@
 **     Version     : Component 1.2.0, Driver 1.4, CPU db: 3.00.000
 **     Repository  : SDK_S32K1xx_15
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2021-12-04, 10:51, # CodeGen: 17
+**     Date/Time   : 2021-12-10, 16:26, # CodeGen: 22
 **     Abstract    :
 **
 **     Settings    :
@@ -219,8 +219,8 @@
 **                  Direction                              : <Automatic>
 **                  Pin GPIO8                              : PTE8
 **                  Direction                              : Output
-**                  Pin GPIO9                              : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin GPIO9                              : PTE9
+**                  Direction                              : Output
 **              Peripheral Type JTAG                       : 
 **                JTAG                                     : 
 **                  Test Clock                             : <Automatic>
@@ -445,7 +445,7 @@
 **                Lock Field                               : <Automatic>
 **                Pull Enable Field                        : <Automatic>
 **                Pull Select Field                        : <Automatic>
-**                Initial Value Field                      : <Automatic>
+**                Initial Value Field                      : High
 **                Digital Filter Field                     : <Automatic>
 **              Pin 13: PTE8                               : 
 **                Custom name, Signal name                 : PTE8
@@ -862,7 +862,7 @@
 
 
 /*! @brief User number of configured pins */
-#define NUM_OF_CONFIGURED_PINS 8
+#define NUM_OF_CONFIGURED_PINS 9
 
 /*! @brief User configuration structure */
 extern pin_settings_config_t g_pin_mux_InitConfigArr[NUM_OF_CONFIGURED_PINS];

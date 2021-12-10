@@ -7,7 +7,7 @@
 **     Version     : Component SDK_S32K1xx_15, Driver 01.00, CPU db: 3.00.000
 **     Repository  : SDK_S32K1xx_15
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2021-12-03, 16:20, # CodeGen: 8
+**     Date/Time   : 2021-12-10, 17:38, # CodeGen: 23
 **
 **     Copyright 1997 - 2015 Freescale Semiconductor, Inc. 
 **     Copyright 2016-2017 NXP 
@@ -60,6 +60,20 @@ lpit_user_channel_config_t lpit1_ChnConfig0 =
     .period = 8000U,
     .triggerSource = LPIT_TRIGGER_SOURCE_INTERNAL,
     .triggerSelect = 0U,
+    .enableReloadOnTrigger = false,
+    .enableStopOnInterrupt = false,
+    .enableStartOnTrigger = false,
+    .chainChannel = false,
+    .isInterruptEnabled = true
+};
+/*! User channel configuration 1 */
+lpit_user_channel_config_t lpit1_ChnConfig1 =
+{
+    .timerMode = LPIT_PERIODIC_COUNTER,
+    .periodUnits = LPIT_PERIOD_UNITS_COUNTS,
+    .period = 1000U,
+    .triggerSource = LPIT_TRIGGER_SOURCE_INTERNAL,
+    .triggerSelect = 1U,
     .enableReloadOnTrigger = false,
     .enableStopOnInterrupt = false,
     .enableStartOnTrigger = false,

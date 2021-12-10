@@ -2,7 +2,7 @@
 #include "event.h"
 //#include "MotorDrv.h"
 #include "ECUM.h"
-
+#include "MCP4716Drv.h"
 volatile uint32_t DelayMsTime;
 
 void LPIT0_IRQHandler(void)
@@ -22,7 +22,8 @@ void LPIT0_IRQHandler(void)
     //LPIT CH1
     if (LPIT_DRV_GetInterruptFlagTimerChannels(INST_LPIT1,(1 << 1)))
 	{
-        //180 * 100 = 18000Hz
+        //8KHz
+        PlaySineWave();
 
         /* Clear LPIT channel flag */
         LPIT_DRV_ClearInterruptFlagTimerChannels(INST_LPIT1, (1 << 1));

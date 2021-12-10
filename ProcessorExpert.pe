@@ -3,7 +3,7 @@
   <Header>
     <Name>DMK_ALV_77B_001</Name>
     <SavedBy>dm01</SavedBy>
-    <ModificationStamp>11</ModificationStamp>
+    <ModificationStamp>15</ModificationStamp>
     <Date>2021-12-03</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.12.2.RT7_b1743-0713</PEversion>
@@ -29,7 +29,7 @@
     <UseExistingModules>true</UseExistingModules>
     <RenamePeripheries>false</RenamePeripheries>
     <Autodependency>true</Autodependency>
-    <ProjectCompNumb>14</ProjectCompNumb>
+    <ProjectCompNumb>16</ProjectCompNumb>
     <DelUnusedPreviouslyGenFiles>true</DelUnusedPreviouslyGenFiles>
     <GeneratedCodeFrozen>false</GeneratedCodeFrozen>
     <AssignInitComponentNameToPrph>true</AssignInitComponentNameToPrph>
@@ -1948,14 +1948,14 @@
         <ItemSymbol>PTE_port_9</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>&lt;Automatic&gt;</Value>
+        <Value>PTE9</Value>
         <SharedPrphMode>false</SharedPrphMode>
       </ItemState>
       <ItemState>
         <ItemSymbol>PTE_port_9_Dir</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>&lt;Automatic&gt;</Value>
+        <Value>Output</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>JTAG</ItemSymbol>
@@ -3418,8 +3418,8 @@
         <ItemSymbol>PTE9_InitValue</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>&lt;Automatic&gt;</Value>
-        <PinFuncPropStateId>&lt;Automatic&gt;</PinFuncPropStateId>
+        <Value>High</Value>
+        <PinFuncPropStateId>state_1</PinFuncPropStateId>
       </ItemState>
       <ItemState>
         <ItemSymbol>PTE9_DigitalFilter</ItemSymbol>
@@ -9913,7 +9913,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>400000</Value>
+        <Value>1000000</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -10691,8 +10691,8 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <TypeSpecNameState>type_edma_channel_request_s32k116</TypeSpecNameState>
-        <Index>0</Index>
-        <EnumSymbVal>EDMA_REQ_DISABLED</EnumSymbVal>
+        <Index>33</Index>
+        <EnumSymbVal>EDMA_REQ_DMAMUX_ALWAYS_ENABLED1</EnumSymbVal>
       </ItemState>
       <ItemState>
         <ItemSymbol>CallbackName0</ItemSymbol>
@@ -11490,7 +11490,7 @@
       <ItemState>
         <ItemSymbol>Configuration</ItemSymbol>
         <ReadOnly>false</ReadOnly>
-        <ListItemCount>1</ListItemCount>
+        <ListItemCount>2</ListItemCount>
         <UserReadOnly>false</UserReadOnly>
         <Expanded>true</Expanded>
         <ItemsTypeState>Beans\lpit\Items\S32K144_SDK01\lpit_Configuration.item</ItemsTypeState>
@@ -11591,6 +11591,108 @@
       </ItemState>
       <ItemState>
         <ItemSymbol>InterruptEnable0</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Configuration_1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>true</Value>
+        <Expanded>true</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Configuration_NAME1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>lpit1_ChnConfig1</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Configuration_READONLY1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>1</Index>
+        <Value>false</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>TimerMode1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>LPIT_PERIODIC_COUNTER</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>PeriodUnit1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <EnumSymbVal>LPIT_PERIOD_UNITS_COUNTS</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>TimerPeriod1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1000</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>TriggerSource1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>1</Index>
+        <EnumSymbVal>LPIT_TRIGGER_SOURCE_INTERNAL</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>TriggerSelect1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>1</Index>
+        <EnumSymbVal>1U</EnumSymbVal>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>ReloadOnTrigger1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>1</Index>
+        <Value>false</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>StopOnInterrupt1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>1</Index>
+        <Value>false</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>StartOnTrigger1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>1</Index>
+        <Value>false</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>ChannelChain1</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>1</Index>
+        <Value>false</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>InterruptEnable1</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>

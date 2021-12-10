@@ -23,16 +23,16 @@
   </ToolchainSettings>
   <GeneratedFilesList>
     <GeneratedByPE>
-      <File Name="Sources/main.c" FileDate="2021-12-04, 09:34:10" FileAge="1638581650327" FileType="128" />
+      <File Name="Sources/main.c" FileDate="2021-12-10, 16:22:08" FileAge="1639124528948" FileType="128" />
       <File Name="SDK/platform/drivers/src/pins/pins_port_hw_access.c" FileDate="2021-12-03, 13:42:56" FileAge="1638510176039" FileType="1048576" CompNumb="2" />
       <File Name="SDK/platform/drivers/src/clock/S32K1xx/clock_S32K1xx.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176064" FileType="1048576" CompNumb="3" />
       <File Name="SDK/platform/drivers/src/clock/S32K1xx/clock_S32K1xx.c" FileDate="2021-12-03, 13:42:56" FileAge="1638510176060" FileType="1048576" CompNumb="3" />
       <File Name="SDK/platform/drivers/inc/interrupt_manager.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176052" FileType="1048576" CompNumb="4" />
       <File Name="SDK/platform/drivers/inc/flexio_uart_driver.h" FileDate="2021-12-03, 14:12:51" FileAge="1638511971979" FileType="1048576" CompNumb="11" />
-      <File Name="Generated_Code/lpit1.h" FileDate="2021-12-03, 16:20:04" FileAge="1638519604852" FileType="45637" CompNumb="12" />
+      <File Name="Generated_Code/lpit1.h" FileDate="2021-12-10, 17:38:46" FileAge="1639129126008" FileType="45637" CompNumb="12" />
       <File Name="SDK/platform/devices/S32K116/include/S32K116_features.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176121" FileType="1048576" CompNumb="1" />
       <File Name="SDK/platform/drivers/inc/lpi2c_driver.h" FileDate="2021-12-03, 14:12:51" FileAge="1638511971962" FileType="1048576" CompNumb="5" />
-      <File Name="Generated_Code/lpit1.c" FileDate="2021-12-03, 16:20:04" FileAge="1638519604849" FileType="45637" CompNumb="12" />
+      <File Name="Generated_Code/lpit1.c" FileDate="2021-12-10, 17:38:46" FileAge="1639129126015" FileType="45637" CompNumb="12" />
       <File Name="SDK/platform/drivers/inc/clock.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176082" FileType="1048576" CompNumb="3" />
       <File Name="Generated_Code/Cpu.h" FileDate="2021-12-04, 09:20:07" FileAge="1638580807215" FileType="45637" CompNumb="1" />
       <File Name="SDK/platform/devices/device_registers.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176095" FileType="1048576" CompNumb="1" />
@@ -42,12 +42,12 @@
       <File Name="Generated_Code/Cpu.c" FileDate="2021-12-03, 13:42:56" FileAge="1638510176133" FileType="45637" CompNumb="1" />
       <File Name="SDK/platform/drivers/src/edma/edma_irq.c" FileDate="2021-12-03, 14:12:51" FileAge="1638511971934" FileType="1048576" CompNumb="8" />
       <File Name="SDK/platform/drivers/src/pins/pins_driver.c" FileDate="2021-12-03, 13:42:56" FileAge="1638510176025" FileType="1048576" CompNumb="2" />
-      <File Name="Generated_Code/pin_mux.h" FileDate="2021-12-04, 10:51:31" FileAge="1638586291896" FileType="45637" CompNumb="2" />
+      <File Name="Generated_Code/pin_mux.h" FileDate="2021-12-10, 16:26:41" FileAge="1639124801893" FileType="45637" CompNumb="2" />
       <File Name="SDK/platform/devices/devassert.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176090" FileType="1048576" CompNumb="1" />
       <File Name="SDK/platform/drivers/src/edma/edma_hw_access.h" FileDate="2021-12-03, 14:12:51" FileAge="1638511971938" FileType="1048576" CompNumb="8" />
       <File Name="SDK/platform/drivers/src/flexio/flexio_uart_driver.c" FileDate="2021-12-03, 14:12:51" FileAge="1638511971967" FileType="1048576" CompNumb="11" />
       <File Name="SDK/platform/drivers/src/flexio/flexio_hw_access.h" FileDate="2021-12-03, 14:12:51" FileAge="1638511971976" FileType="1048576" CompNumb="0" />
-      <File Name="Generated_Code/pin_mux.c" FileDate="2021-12-04, 10:51:31" FileAge="1638586291899" FileType="45637" CompNumb="2" />
+      <File Name="Generated_Code/pin_mux.c" FileDate="2021-12-10, 16:26:41" FileAge="1639124801899" FileType="45637" CompNumb="2" />
       <File Name="SDK/rtos/osif/osif_baremetal.c" FileDate="2021-12-03, 14:12:51" FileAge="1638511971923" FileType="1048576" CompNumb="6" />
       <File Name="SDK/platform/drivers/src/edma/edma_hw_access.c" FileDate="2021-12-03, 14:12:51" FileAge="1638511971932" FileType="1048576" CompNumb="8" />
       <File Name="SDK/platform/drivers/inc/pins_driver.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176036" FileType="1048576" CompNumb="2" />
@@ -56,16 +56,17 @@
       <File Name="SDK/platform/drivers/src/clock/S32K1xx/scg_hw_access.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176073" FileType="1048576" CompNumb="3" />
       <File Name="SDK/platform/drivers/src/pins/pins_gpio_hw_access.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176029" FileType="1048576" CompNumb="2" />
       <File Name="SDK/platform/drivers/src/lpit/lpit_driver.c" FileDate="2021-12-03, 16:20:04" FileAge="1638519604819" FileType="1048576" CompNumb="12" />
-      <File Name="SDK/platform/drivers/inc/flexio_i2c_driver.h" FileDate="2021-12-04, 09:20:07" FileAge="1638580807163" FileType="1048576" />
+      <File Name="SDK/platform/drivers/inc/flexio_i2c_driver.h" FileDate="2021-12-04, 09:20:07" FileAge="1638580807163" FileType="1048576" CompNumb="13" />
       <File Name="SDK/platform/devices/S32K116/include/S32K116.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176129" FileType="1048576" CompNumb="1" />
       <File Name="Generated_Code/dmaController1.h" FileDate="2021-12-03, 14:12:52" FileAge="1638511972022" FileType="45637" CompNumb="8" />
       <File Name="SDK/platform/drivers/src/clock/S32K1xx/pmc_hw_access.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176070" FileType="1048576" CompNumb="3" />
       <File Name="Documentation/DMK_ALV_77B_001_Settings.xml" FileDate="2021-12-04, 09:20:07" FileAge="1638580807253" FileType="3072" />
       <File Name="SDK/rtos/osif/osif.h" FileDate="2021-12-03, 14:12:51" FileAge="1638511971920" FileType="1048576" CompNumb="6" />
-      <File Name="Generated_Code/dmaController1.c" FileDate="2021-12-03, 14:12:52" FileAge="1638511972019" FileType="45637" CompNumb="8" />
+      <File Name="Generated_Code/dmaController1.c" FileDate="2021-12-10, 15:03:58" FileAge="1639119838871" FileType="45637" CompNumb="8" />
       <File Name="SDK/platform/drivers/src/lpi2c/lpi2c_hw_access.h" FileDate="2021-12-03, 14:12:51" FileAge="1638511971959" FileType="1048576" CompNumb="5" />
       <File Name="Generated_Code/flexio_i2c1.h" FileDate="2021-12-04, 09:20:07" FileAge="1638580807193" FileType="45637" CompNumb="13" />
       <File Name="SDK/platform/drivers/src/lpi2c/lpi2c_hw_access.c" FileDate="2021-12-03, 14:12:51" FileAge="1638511971956" FileType="1048576" CompNumb="5" />
+      <File Name="SDK/platform/drivers/src/flexio/flexio_i2c_driver.c" FileDate="2021-12-04, 09:20:07" FileAge="1638580807159" FileType="1048576" CompNumb="13" />
       <File Name="Generated_Code/flexio_i2c1.c" FileDate="2021-12-04, 09:44:28" FileAge="1638582268099" FileType="45637" CompNumb="13" />
       <File Name="SDK/platform/pal/inc/uart_pal_mapping.h" FileDate="1970-01-01, 07:59:59" FileAge="-1" FileType="1048576" />
       <File Name="SDK/platform/pal/inc/uart_pal.h" FileDate="1970-01-01, 07:59:59" FileAge="-1" FileType="1048576" />
@@ -76,7 +77,6 @@
       <File Name="SDK/platform/devices/startup.c" FileDate="2021-12-03, 13:42:56" FileAge="1638510176109" FileType="1048576" CompNumb="1" />
       <File Name="Documentation/DMK_ALV_77B_001.txt" FileDate="2021-12-04, 09:20:07" FileAge="1638580807303" FileType="3072" />
       <File Name="SDK/platform/devices/status.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176092" FileType="1048576" CompNumb="1" />
-      <File Name="SDK/platform/drivers/src/flexio/flexio_i2c_driver.c" FileDate="2021-12-04, 09:20:07" FileAge="1638580807159" FileType="1048576" />
       <File Name="SDK/platform/devices/callbacks.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176099" FileType="1048576" CompNumb="1" />
       <File Name="SDK/platform/drivers/src/lpi2c/lpi2c_driver.c" FileDate="2021-12-03, 14:12:51" FileAge="1638511971954" FileType="1048576" CompNumb="5" />
       <File Name="SDK/platform/devices/S32K116/startup/system_S32K116.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176114" FileType="1048576" CompNumb="1" />
@@ -84,7 +84,7 @@
       <File Name="Generated_Code/lpi2c1.h" FileDate="2021-12-03, 14:12:52" FileAge="1638511972017" FileType="45637" CompNumb="5" />
       <File Name="SDK/platform/drivers/src/flexio/flexio_common.h" FileDate="2021-12-03, 14:12:51" FileAge="1638511971973" FileType="1048576" CompNumb="0" />
       <File Name="SDK/platform/drivers/src/clock/S32K1xx/sim_hw_access.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176076" FileType="1048576" CompNumb="3" />
-      <File Name="Generated_Code/lpi2c1.c" FileDate="2021-12-03, 14:12:52" FileAge="1638511972014" FileType="45637" CompNumb="5" />
+      <File Name="Generated_Code/lpi2c1.c" FileDate="2021-12-10, 15:03:58" FileAge="1639119838877" FileType="45637" CompNumb="5" />
       <File Name="SDK/platform/drivers/src/flexio/flexio_common.c" FileDate="2021-12-03, 14:12:51" FileAge="1638511971970" FileType="1048576" CompNumb="0" />
       <File Name="SDK/platform/pal/src/uart/uart_pal.c" FileDate="1970-01-01, 07:59:59" FileAge="-1" FileType="1048576" />
       <File Name="SDK/platform/drivers/src/interrupt/interrupt_manager.c" FileDate="2021-12-03, 13:42:56" FileAge="1638510176049" FileType="1048576" CompNumb="4" />
@@ -99,5 +99,5 @@
       <File Name="SDK/platform/drivers/src/pins/pins_port_hw_access.h" FileDate="2021-12-03, 13:42:56" FileAge="1638510176043" FileType="1048576" CompNumb="2" />
     </GeneratedByPE>
   </GeneratedFilesList>
-  <CodeGenReference>18</CodeGenReference>
+  <CodeGenReference>24</CodeGenReference>
 </CodeGenerationInfo>

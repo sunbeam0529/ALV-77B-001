@@ -7,7 +7,7 @@
 **     Version     : Component SDK_S32K1xx_15, Driver 01.00, CPU db: 3.00.000
 **     Repository  : SDK_S32K1xx_15
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2021-12-03, 14:12, # CodeGen: 1
+**     Date/Time   : 2021-12-10, 15:03, # CodeGen: 20
 **
 **     Copyright 1997 - 2015 Freescale Semiconductor, Inc. 
 **     Copyright 2016-2017 NXP 
@@ -86,7 +86,7 @@ const lpi2c_master_user_config_t lpi2c1_MasterConfig0 = {
   .slaveAddress = 70U,
   .is10bitAddr = false,
   .operatingMode = LPI2C_FAST_MODE,
-  .baudRate = 400000U,
+  .baudRate = 1000000U,
   .transferType = LPI2C_USING_INTERRUPTS,
   .dmaChannel = 0U,
   .masterCallback = NULL,

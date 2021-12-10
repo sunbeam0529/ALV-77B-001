@@ -512,7 +512,7 @@
     </GenFiles>
     <SignalListFile />
     <DestinationCompiler>GNUC</DestinationCompiler>
-    <ProjectModificationStamp>11</ProjectModificationStamp>
+    <ProjectModificationStamp>15</ProjectModificationStamp>
   </Options>
   <CpuID_1>
     <Generated>true</Generated>
@@ -553,8 +553,8 @@
     <GenComponentVersion>1.2.0</GenComponentVersion>
     <GenDriverVersion>1.4</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1401181807</HeaderAge>
-    <CodeAge>1401181807</CodeAge>
+    <HeaderAge>1401586516</HeaderAge>
+    <CodeAge>1401586516</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>23</GenNumMethods>
     <PINS_DRV_Init>true</PINS_DRV_Init>
@@ -663,7 +663,7 @@
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule />
     <HeaderAge>1401123226</HeaderAge>
-    <CodeAge>1401123226</CodeAge>
+    <CodeAge>1401583741</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>25</GenNumMethods>
     <LPI2C_DRV_MasterInit>true</LPI2C_DRV_MasterInit>
@@ -740,7 +740,7 @@
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule />
     <HeaderAge>1401123226</HeaderAge>
-    <CodeAge>1401123226</CodeAge>
+    <CodeAge>1401583741</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>32</GenNumMethods>
     <EDMA_DRV_Init>true</EDMA_DRV_Init>
@@ -833,8 +833,8 @@
     <GenComponentVersion>SDK_S32K1xx_15</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1401127554</HeaderAge>
-    <CodeAge>1401127554</CodeAge>
+    <HeaderAge>1401588951</HeaderAge>
+    <CodeAge>1401588951</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>19</GenNumMethods>
     <LPIT_DRV_GetDefaultConfig>true</LPIT_DRV_GetDefaultConfig>

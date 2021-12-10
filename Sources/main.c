@@ -28,6 +28,7 @@
 #include "printf.h"
 #include "ECUM.h"
 #include "PressSensor.h"
+#include "MCP4716Drv.h"
 volatile int exit_code = 0;
 flexio_uart_state_t   uartStateTX;
 flexio_device_state_t flexIODeviceState;
@@ -84,21 +85,27 @@ int main(void)
 
 	PINS_DRV_Init(NUM_OF_CONFIGURED_PINS, g_pin_mux_InitConfigArr);
 
-	//UART_Init(&uart_pal1_instance, &uart_pal1_Config0);
-	//UART_SendDataBlocking(&uart_pal1_instance, (uint8_t *)testdata, 128, 1000000);
 	FLEXIO_DRV_InitDevice(INST_FLEXIO_UART1, &flexIODeviceState);
 	FLEXIO_UART_DRV_Init(INST_FLEXIO_UART1, &flexio_uart1_Config0, &uartStateTX);
 
 	//FLEXIO_UART_DRV_SendData(&uartStateTX,testdata,128);
 	LPIT_DRV_Init(INST_LPIT1, &lpit1_InitConfig);
 	LPIT_DRV_InitChannel(INST_LPIT1, 0, &lpit1_ChnConfig0);
+    LPIT_DRV_InitChannel(INST_LPIT1, 1, &lpit1_ChnConfig1);//used for DAC
 	LPIT_DRV_StartTimerChannels(INST_LPIT1, (1 << 0));
 
 	PressSensorInit();
+    PINS_DRV_WritePin(PTE,9,1);
 	printf("start----------\n");
 	for(;;)
 	{
 		//FLEXIO_UART_DRV_SendDataBlocking(&uartStateTX,testdata,128,1000000);
+		//PlaySineWave();
+        if(TimeBase1msFlag == 1)
+		{
+			TimeBase1msFlag = 0;
+
+		}
 		if(TimeBase100msFlag == 1)
 		{
 			TimeBase100msFlag = 0;
@@ -106,12 +113,14 @@ int main(void)
 		if(TimeBase1000msFlag == 1)
 		{
 			TimeBase1000msFlag = 0;
-			val = GetPressValue(1);
-			printf("press1=%d\n",val);
-            val = GetPressValue(2);
-            printf("press2=%d\n",val);
-            val = GetPressValue(3);
-            printf("press3=%d\n",val);
+            PINS_DRV_TogglePins(PTE,1<<9);
+            StartWave();
+			//val = GetPressValue(1);
+			//printf("press1=%d\n",val);
+            //val = GetPressValue(2);
+            //printf("press2=%d\n",val);
+            //val = GetPressValue(3);
+            //printf("press3=%d\n",val);
 			//FLEXIO_UART_DRV_SendDataBlocking(&uartStateTX,testdata,2,1000);
 		}
 	}
