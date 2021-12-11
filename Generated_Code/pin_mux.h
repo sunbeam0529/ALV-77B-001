@@ -7,7 +7,7 @@
 **     Version     : Component 1.2.0, Driver 1.4, CPU db: 3.00.000
 **     Repository  : SDK_S32K1xx_15
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2021-12-10, 16:26, # CodeGen: 22
+**     Date/Time   : 2021-12-11, 08:51, # CodeGen: 27
 **     Abstract    :
 **
 **     Settings    :
@@ -445,7 +445,7 @@
 **                Lock Field                               : <Automatic>
 **                Pull Enable Field                        : <Automatic>
 **                Pull Select Field                        : <Automatic>
-**                Initial Value Field                      : High
+**                Initial Value Field                      : Low
 **                Digital Filter Field                     : <Automatic>
 **              Pin 13: PTE8                               : 
 **                Custom name, Signal name                 : PTE8

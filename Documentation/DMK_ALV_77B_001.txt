@@ -200,6 +200,42 @@ Module "flexio_i2c1" (component flexio_i2c)
    - flexio_i2c1_FLEXIO_I2C_DRV_MasterGetStatus -Get the status of the current non-blocking I2C master transaction.
    - flexio_i2c1_FLEXIO_I2C_DRV_GetDefaultConfig -Returns default configuration structure for FLEXIO_I2C.
 
+Module "lpTmr1"    (component lptmr)
+   - lpTmr1_LPTMR_DRV_InitConfigStruct -Initialize configuration structure.
+   - lpTmr1_LPTMR_DRV_Init -Initializes the LPTMR as Timer or Pulse Counter
+   - lpTmr1_LPTMR_DRV_SetConfig -Configure a LPTMR instance.
+   - lpTmr1_LPTMR_DRV_GetConfig -Get the current configuration of a LPTMR instance.
+   - lpTmr1_LPTMR_DRV_Deinit -Deinitializes a LPTMR instance.
+   - lpTmr1_LPTMR_DRV_SetCompareValueByCount -Change the Compare Value in counter tick units.
+   - lpTmr1_LPTMR_DRV_GetCompareValueByCount -Get the Compare Value in counter tick units.
+   - lpTmr1_LPTMR_DRV_SetCompareValueByUs -Set the compare value for Timer Mode in microseconds.
+   - lpTmr1_LPTMR_DRV_GetCompareValueByUs -Get the Compare Value in microseconds.
+   - lpTmr1_LPTMR_DRV_GetCompareFlag -Get the current state of the Compare Flag (Interrupt Pending)
+   - lpTmr1_LPTMR_DRV_ClearCompareFlag -Clear the Compare/Interrupt Pending Flag.
+   - lpTmr1_LPTMR_DRV_IsRunning -Get the run state of a LPTMR instance.
+   - lpTmr1_LPTMR_DRV_SetInterrupt -Enable/disable the LPTMR interrupt
+   - lpTmr1_LPTMR_DRV_GetCounterValueByCount -Get the current counter value in counter tick units.
+   - lpTmr1_LPTMR_DRV_StartCounter -Enable the LPTMR / Start the counter.
+   - lpTmr1_LPTMR_DRV_StopCounter -Disable the LPTMR / Stop the counter.
+   - lpTmr1_LPTMR_DRV_SetPinConfiguration -Set the Input Pin configuration for Pulse Counter mode.
+
+Module "watchdog1" (component wdog)
+   - watchdog1_WDOG_DRV_Init -Initializes the WDOG driver.
+   - watchdog1_WDOG_DRV_Deinit -De-initializes the WDOG driver.
+   - watchdog1_WDOG_DRV_GetConfig -Gets the current configuration of the WDOG.
+   - watchdog1_WDOG_DRV_GetDefaultConfig -Gets default configuration of the WDOG.
+   - watchdog1_WDOG_DRV_SetInt -Enables/Disables the WDOG timeout interrupt and sets a function to be called when a timeout 
+                interrupt is received, before reset.
+   - watchdog1_WDOG_DRV_ClearIntFlag -Clear interrupt flag of the WDOG.
+   - watchdog1_WDOG_DRV_Trigger -Refreshes the WDOG counter.
+   - watchdog1_WDOG_DRV_GetCounter -Gets the value of the WDOG counter.
+   - watchdog1_WDOG_DRV_SetWindow -Set window mode and window value of the WDOG.
+   - watchdog1_WDOG_DRV_SetMode -Sets the mode operation of the WDOG.
+   - watchdog1_WDOG_DRV_SetTimeout -Sets the value of the WDOG timeout.
+   - watchdog1_WDOG_DRV_SetTestMode -This function changes the test mode of the WDOG. If the WDOG is tested in mode, software 
+                should set this field to 0x01U in order to indicate that the WDOG is functioning normally.
+   - watchdog1_WDOG_DRV_GetTestMode -This function verifies the test mode of the WDOG.
+
 Module "Cpu"       (component S32K116_48)
    - Cpu_SystemInit -This function disables the watchdog, enables FPU and the power mode protection. SystemInit is called from 
                 startup_device file.

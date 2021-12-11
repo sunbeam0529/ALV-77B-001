@@ -23,12 +23,16 @@
 /* MODULE main */
 
 
+
+
 /* Including necessary module. Cpu.h contains other modules needed for compiling.*/
 #include "Cpu.h"
 #include "printf.h"
 #include "ECUM.h"
 #include "PressSensor.h"
 #include "MCP4716Drv.h"
+#include "Touch.h"
+
 volatile int exit_code = 0;
 flexio_uart_state_t   uartStateTX;
 flexio_device_state_t flexIODeviceState;
@@ -95,8 +99,11 @@ int main(void)
 	LPIT_DRV_StartTimerChannels(INST_LPIT1, (1 << 0));
 
 	PressSensorInit();
-    PINS_DRV_WritePin(PTE,9,1);
+    //PINS_DRV_WritePin(PTE,9,1);
 	printf("start----------\n");
+	WDOG_DRV_Init(INST_WATCHDOG1, &watchdog1_Config0);
+    TouchInit();
+
 	for(;;)
 	{
 		//FLEXIO_UART_DRV_SendDataBlocking(&uartStateTX,testdata,128,1000000);
@@ -106,6 +113,13 @@ int main(void)
 			TimeBase1msFlag = 0;
 
 		}
+        if(TimeBase5msFlag == 1)
+        {
+            TimeBase5msFlag = 0;
+            TouchDetect();
+            TouchProcess();
+            WDOG_DRV_Trigger(INST_WATCHDOG1);
+        }
 		if(TimeBase100msFlag == 1)
 		{
 			TimeBase100msFlag = 0;
@@ -113,8 +127,8 @@ int main(void)
 		if(TimeBase1000msFlag == 1)
 		{
 			TimeBase1000msFlag = 0;
-            PINS_DRV_TogglePins(PTE,1<<9);
-            StartWave();
+            //PINS_DRV_TogglePins(PTE,1<<9);
+            //StartWave();
 			//val = GetPressValue(1);
 			//printf("press1=%d\n",val);
             //val = GetPressValue(2);
