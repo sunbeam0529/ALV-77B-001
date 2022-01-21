@@ -63,74 +63,74 @@
 #endif
 
 // Electrode touch threshold relative to DC tracker value
-#define BUTTON_TOUCH_THRESHOLD_DELTA            700
+#define BUTTON_TOUCH_THRESHOLD_DELTA            200
 // Electrode release threshold relative to DC tracker value
-#define BUTTON_RELEASE_THRESHOLD_DELTA          600
+#define BUTTON_RELEASE_THRESHOLD_DELTA          100
 
 /*******************************************************************************
  * Modify: Electrode 0 defines
  ******************************************************************************/
 #ifdef ELEC0
 // Electrode touch threshold relative to DC tracker value
-#define ELEC0_TOUCH_THRESHOLD_DELTA       400
+#define ELEC0_TOUCH_THRESHOLD_DELTA       BUTTON_TOUCH_THRESHOLD_DELTA
 // Electrode release threshold relative to DC tracker value
-#define ELEC0_RELEASE_THRESHOLD_DELTA     100
+#define ELEC0_RELEASE_THRESHOLD_DELTA     BUTTON_RELEASE_THRESHOLD_DELTA
 #endif
 
 /*******************************************************************************
  * Modify: Electrode 1 defines
  ******************************************************************************/
 #ifdef ELEC1
-#define ELEC1_TOUCH_THRESHOLD_DELTA       400
-#define ELEC1_RELEASE_THRESHOLD_DELTA     100
+#define ELEC1_TOUCH_THRESHOLD_DELTA       BUTTON_TOUCH_THRESHOLD_DELTA
+#define ELEC1_RELEASE_THRESHOLD_DELTA     BUTTON_RELEASE_THRESHOLD_DELTA
 #endif
 
 /*******************************************************************************
  * Modify: Electrode 2 defines
  ******************************************************************************/
 #ifdef ELEC2
-#define ELEC2_TOUCH_THRESHOLD_DELTA       400
-#define ELEC2_RELEASE_THRESHOLD_DELTA     100
+#define ELEC2_TOUCH_THRESHOLD_DELTA       160
+#define ELEC2_RELEASE_THRESHOLD_DELTA     80
 #endif
 
 /*******************************************************************************
  * Modify: Electrode 3 defines
  ******************************************************************************/
 #ifdef ELEC3
-#define ELEC3_TOUCH_THRESHOLD_DELTA       400
-#define ELEC3_RELEASE_THRESHOLD_DELTA     200
+#define ELEC3_TOUCH_THRESHOLD_DELTA       100
+#define ELEC3_RELEASE_THRESHOLD_DELTA     50
 #endif
 
 /*******************************************************************************
  * Modify: Electrode 4 defines
  ******************************************************************************/
 #ifdef ELEC4
-#define ELEC4_TOUCH_THRESHOLD_DELTA       400
-#define ELEC4_RELEASE_THRESHOLD_DELTA     200
+#define ELEC4_TOUCH_THRESHOLD_DELTA       BUTTON_TOUCH_THRESHOLD_DELTA
+#define ELEC4_RELEASE_THRESHOLD_DELTA     BUTTON_RELEASE_THRESHOLD_DELTA
 #endif
 
 /*******************************************************************************
  * Modify: Electrode 5 defines
  ******************************************************************************/
 #ifdef ELEC5
-#define ELEC5_TOUCH_THRESHOLD_DELTA       400
-#define ELEC5_RELEASE_THRESHOLD_DELTA     200
+#define ELEC5_TOUCH_THRESHOLD_DELTA       BUTTON_TOUCH_THRESHOLD_DELTA
+#define ELEC5_RELEASE_THRESHOLD_DELTA     BUTTON_RELEASE_THRESHOLD_DELTA
 #endif
 
 /*******************************************************************************
  * Modify: Electrode 6 defines
  ******************************************************************************/
 #ifdef ELEC6
-#define ELEC6_TOUCH_THRESHOLD_DELTA       400
-#define ELEC6_RELEASE_THRESHOLD_DELTA     200
+#define ELEC6_TOUCH_THRESHOLD_DELTA       130
+#define ELEC6_RELEASE_THRESHOLD_DELTA     70
 #endif
 
 /*******************************************************************************
  * Modify: Electrode 7 defines
  ******************************************************************************/
 #ifdef ELEC7
-#define ELEC7_TOUCH_THRESHOLD_DELTA       400//BUTTON_TOUCH_THRESHOLD_DELTA
-#define ELEC7_RELEASE_THRESHOLD_DELTA     200//BUTTON_RELEASE_THRESHOLD_DELTA
+#define ELEC7_TOUCH_THRESHOLD_DELTA       BUTTON_TOUCH_THRESHOLD_DELTA//BUTTON_TOUCH_THRESHOLD_DELTA
+#define ELEC7_RELEASE_THRESHOLD_DELTA     BUTTON_RELEASE_THRESHOLD_DELTA//BUTTON_RELEASE_THRESHOLD_DELTA
 #endif
 
 /*******************************************************************************

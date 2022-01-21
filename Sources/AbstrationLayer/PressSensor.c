@@ -10,21 +10,21 @@ uint8_t ReadReg(uint8_t dev,uint8_t reg)
     uint8_t txbuf[2],ret;
     switch (dev)
     {
-    case 1:
+    case 2:
         txbuf[0] = reg;
         LPI2C_DRV_MasterSetSlaveAddr(INST_LPI2C1,0x46,false);
         ret = LPI2C_DRV_MasterSendDataBlocking(INST_LPI2C1, txbuf, 1, true, 10);
         ret = LPI2C_DRV_MasterReceiveDataBlocking(INST_LPI2C1, txbuf, 1, true, 10);
         return txbuf[0];
         break;
-    case 2:
+    case 3:
         txbuf[0] = reg;
         FLEXIO_I2C_DRV_MasterSetSlaveAddr(&i2cMasterState,0x46);
         ret = FLEXIO_I2C_DRV_MasterSendDataBlocking(&i2cMasterState, txbuf, 1, true, 10);
         ret = FLEXIO_I2C_DRV_MasterReceiveDataBlocking(&i2cMasterState, txbuf, 1, true, 10);
         return txbuf[0];
         break;
-    case 3:
+    case 1:
         txbuf[0] = reg;
         ret = SWI2C_SendDataBlocking(0x46, txbuf, 1, true);
         ret = SWI2C_ReceiveDataBlocking(0x46, txbuf, 1, true);
@@ -125,10 +125,11 @@ uint16_t GetPressValue(uint8_t dev)
     ret >>=  4 ;
     press <<= 4;
     press += ret;
+    /*
     if(press > 2047)
     {
         press = 0;
     }
-
+     */
     return press;
 }

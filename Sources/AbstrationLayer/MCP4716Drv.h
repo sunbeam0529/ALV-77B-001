@@ -10,6 +10,6 @@ extern const int16_t sine_wave[];
 uint8_t DAC_Write_VolatileRegVal(uint16_t val);
 void PlaySineWave(void);
 void StartWave(void);
-
+uint8_t GetMotorState(void);
 
 #endif

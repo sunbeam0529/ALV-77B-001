@@ -60,12 +60,7 @@ void LPTMR0_IRQHandler(void)
 {
 	static uint8_t interrupttimer=0;
 	// Initiate electrodes scan
-    /*
-    if(GetMotorState() == false)
-    {
-        //Scan Touch Key
 
-    }*/
     ElectrodesScanLPTMRHandlerRoutine();
     LPTMR_DRV_ClearCompareFlag(INST_LPTMR1);
 	INT_SYS_ClearPending(LPTMR0_IRQn);

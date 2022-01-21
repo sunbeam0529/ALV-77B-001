@@ -32,30 +32,13 @@
 #include "PressSensor.h"
 #include "MCP4716Drv.h"
 #include "Touch.h"
-
+#include "sbc.h"
+#include "diagnostic_service_slave.h"
 volatile int exit_code = 0;
 flexio_uart_state_t   uartStateTX;
 flexio_device_state_t flexIODeviceState;
 /* User includes (#include below this line is not maintained by Processor Expert) */
-
-uint8_t testdata[128]={
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-    1,2,3,4,5,6,7,8,
-};
+extern int16_t press;
 
 void _putchar(char character)
 {
@@ -75,7 +58,7 @@ void _putchar(char character)
 int main(void)
 {
   /* Write your local variable definition here */
-	uint16_t val;
+	uint16_t val,leftpress1,leftpress2,leftpress3;
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   #ifdef PEX_RTOS_INIT
     PEX_RTOS_INIT();                   /* Initialization of the selected RTOS. Macro is defined by the RTOS component. */
@@ -99,15 +82,19 @@ int main(void)
 	LPIT_DRV_StartTimerChannels(INST_LPIT1, (1 << 0));
 
 	PressSensorInit();
-    //PINS_DRV_WritePin(PTE,9,1);
-	printf("start----------\n");
+    PINS_DRV_WritePin(PTE,9,1);
+	//printf("start----------\n");
 	WDOG_DRV_Init(INST_WATCHDOG1, &watchdog1_Config0);
     TouchInit();
+
+    SBC_Init();
+    slave_diagnostic_init();
 
 	for(;;)
 	{
 		//FLEXIO_UART_DRV_SendDataBlocking(&uartStateTX,testdata,128,1000000);
 		//PlaySineWave();
+		slave_diagnostic_task();
         if(TimeBase1msFlag == 1)
 		{
 			TimeBase1msFlag = 0;
@@ -116,24 +103,41 @@ int main(void)
         if(TimeBase5msFlag == 1)
         {
             TimeBase5msFlag = 0;
-            TouchDetect();
-            TouchProcess();
+            if (GetMotorState() == 0)
+            {
+                TouchDetect();
+                TouchProcess();
+            }
+            
             WDOG_DRV_Trigger(INST_WATCHDOG1);
         }
 		if(TimeBase100msFlag == 1)
 		{
 			TimeBase100msFlag = 0;
+            if (GetMotorState() == 0)
+            {
+            	leftpress1 = GetPressValue(1);
+                l_u16_wr_LI0_MFS_LPressSignal1(leftpress1);
+                leftpress2 = GetPressValue(2);
+                l_u16_wr_LI0_MFS_LPressSignal2(leftpress2);
+                leftpress3 = GetPressValue(3);
+                l_u16_wr_LI0_MFS_LPressSignal3(leftpress3);
+                if(leftpress1 > 0x7ff)leftpress1 = 0;
+                if(leftpress2 > 0x7ff)leftpress2 = 0;
+                if(leftpress3 > 0x7ff)leftpress3 = 0;
+
+                press = leftpress1+leftpress2+leftpress3;
+                //press >>= 1;
+            }
+            
+			
 		}
 		if(TimeBase1000msFlag == 1)
 		{
 			TimeBase1000msFlag = 0;
             //PINS_DRV_TogglePins(PTE,1<<9);
-            //StartWave();
-			//val = GetPressValue(1);
-			//printf("press1=%d\n",val);
-            //val = GetPressValue(2);
-            //printf("press2=%d\n",val);
-            //val = GetPressValue(3);
+            StartWave();
+
             //printf("press3=%d\n",val);
 			//FLEXIO_UART_DRV_SendDataBlocking(&uartStateTX,testdata,2,1000);
 		}

@@ -1,0 +1,223 @@
+/*---------GLOBAL DEFINITIONS-----------*/
+LIN_description_file;
+LIN_protocol_version             = "2.1";
+LIN_language_version             = "2.1";
+LIN_speed                        = 19.2 kbps;
+/* ----------NODE DEFINITIONS---------- */
+Nodes {
+   Master:
+      GW,                                                    /* Master node name */
+      1 ms,                                                  /* Time base */
+      0.1 ms;                                                /* Jitter */
+   Slaves:
+      MFS_Left,
+      MFS_Right;
+}
+/* ----------SIGNAL DEFINITIONS---------- */
+Signals {
+   /* Signal_name                : Size,                              Init,            Publisher, Subscriber(s) */
+   MFS_Phone_switch_signal       :  2,                                0x00,            MFS_Right, GW;
+   MFS_Speech_switch_signal      :  2,                                0x00,            MFS_Right, GW;
+   MFS_DistPlus_switch_signal    :  2,                                0x00,            MFS_Right, GW;
+   MFS_DistReduce_switch_signal  :  2,                                0x00,            MFS_Right, GW;
+   MFS_ACC_switch_signal         :  2,                                0x00,            MFS_Right, GW;
+   MFS_RPressSignal1             : 12,                                0x00,            MFS_Right, GW,MFS_Left;
+   MFS_RPressSignal2             : 12,                                0x00,            MFS_Right, GW,MFS_Left;
+   MFS_RPressSignal3             : 12,                                0x00,            MFS_Right, GW,MFS_Left;
+   MFS_UP_switch_signal          :  2,                                0x00,             MFS_Left, GW;
+   MFS_DOWN_switch_signal        :  2,                                0x00,             MFS_Left, GW;
+   MFS_LEFT_switch_signal        :  2,                                0x00,             MFS_Left, GW;
+   MFS_RIGHT_switch_signal       :  2,                                0x00,             MFS_Left, GW;
+   MFS_OK_switch_signal          :  2,                                0x00,             MFS_Left, GW;
+   MFS_LPressSignal1             : 12,                                0x00,             MFS_Left, GW,MFS_Right;
+   MFS_LPressSignal2             : 12,                                0x00,             MFS_Left, GW,MFS_Right;
+   MFS_LPressSignal3             : 12,                                0x00,             MFS_Left, GW,MFS_Right;
+   MFS_LIN_1_Error               :  1,                                0x00,             MFS_Left, GW;
+   MFS_LIN_2_Error               :  1,                                0x00,            MFS_Right, GW;
+   L_BYTE1                       :  8,                                0x00,             MFS_Left, GW;
+   L_BYTE2                       :  8,                                0x00,             MFS_Left, GW;
+   L_BYTE3                       :  8,                                0x00,             MFS_Left, GW;
+   L_BYTE4                       :  8,                                0x00,             MFS_Left, GW;
+   L_BYTE5                       :  8,                                0x00,             MFS_Left, GW;
+   L_BYTE6                       :  8,                                0x00,             MFS_Left, GW;
+   L_BYTE7                       :  8,                                0x00,             MFS_Left, GW;
+   L_BYTE8                       :  8,                                0x00,             MFS_Left, GW;
+   R_BYTE1                       :  8,                                0x00,            MFS_Right, GW;
+   R_BYTE2                       :  8,                                0x00,            MFS_Right, GW;
+   R_BYTE3                       :  8,                                0x00,            MFS_Right, GW;
+   R_BYTE4                       :  8,                                0x00,            MFS_Right, GW;
+   R_BYTE5                       :  8,                                0x00,            MFS_Right, GW;
+   R_BYTE6                       :  8,                                0x00,            MFS_Right, GW;
+   R_BYTE7                       :  8,                                0x00,            MFS_Right, GW;
+   R_BYTE8                       :  8,                                0x00,            MFS_Right, GW;
+   GW_Backlight                  :  8,                                0x00,                   GW, MFS_Left,MFS_Right;
+   GW_BYTE1                      :  8,                                0x00,                   GW, MFS_Left,MFS_Right;
+   GW_BYTE2                      :  8,                                0x00,                   GW, MFS_Left,MFS_Right;
+   GW_BYTE3                      :  8,                                0x00,                   GW, MFS_Left,MFS_Right;
+   GW_BYTE4                      :  8,                                0x00,                   GW, MFS_Left,MFS_Right;
+   GW_BYTE5                      :  8,                                0x00,                   GW, MFS_Left,MFS_Right;
+   GW_BYTE6                      :  8,                                0x00,                   GW, MFS_Left,MFS_Right;
+   R_Rolling                     :  4,                                0x00,            MFS_Right, GW;
+   R_Checksum                    :  8,                                0x00,            MFS_Right, GW;
+   L_Rolling                     :  4,                                0x00,             MFS_Left, GW;
+   L_Checksum                    :  8,                                0x00,             MFS_Left, GW;
+   L_LB                          :  2,                                0x00,             MFS_Left, GW;
+   R_LB                          :  2,                                0x00,            MFS_Right, GW;
+}
+/* ----------DIAGNOSTIC SIGNAL DEFINITIONS---------- */
+Diagnostic_signals {
+   /* MasterReq Reserved Signals */
+   MasterReqB0         :    8,   0;
+   MasterReqB1         :    8,   0;
+   MasterReqB2         :    8,   0;
+   MasterReqB3         :    8,   0;
+   MasterReqB4         :    8,   0;
+   MasterReqB5         :    8,   0;
+   MasterReqB6         :    8,   0;
+   MasterReqB7         :    8,   0;
+   /* SlaveResp Reserved Signals */
+   SlaveRespB0         :    8,   0;
+   SlaveRespB1         :    8,   0;
+   SlaveRespB2         :    8,   0;
+   SlaveRespB3         :    8,   0;
+   SlaveRespB4         :    8,   0;
+   SlaveRespB5         :    8,   0;
+   SlaveRespB6         :    8,   0;
+   SlaveRespB7         :    8,   0;
+}
+/* ----------UNCONDITIONAL FRAME DEFINITIONS---------- */
+Frames {
+   MFS_LIN_1           : 0x19, MFS_Left            ,    8 {
+      MFS_UP_switch_signal, 0;
+      MFS_DOWN_switch_signal, 2;
+      MFS_LEFT_switch_signal, 4;
+      MFS_RIGHT_switch_signal, 6;
+      MFS_OK_switch_signal, 8;
+      L_LB                , 10;
+      MFS_LIN_1_Error     , 15;
+      MFS_LPressSignal1   , 16;
+      MFS_LPressSignal2   , 28;
+      MFS_LPressSignal3   , 40;
+      L_Rolling           , 52;
+      L_Checksum          , 56;
+   }
+   TestFrame1          : 0x10, MFS_Left            ,    8 {
+      L_BYTE1             , 0;
+      L_BYTE2             , 8;
+      L_BYTE3             , 16;
+      L_BYTE4             , 24;
+      L_BYTE5             , 32;
+      L_BYTE6             , 40;
+      L_BYTE7             , 48;
+      L_BYTE8             , 56;
+   }
+   MFS_LIN_2           : 0x1A, MFS_Right           ,    8 {
+      MFS_Phone_switch_signal, 0;
+      MFS_Speech_switch_signal, 2;
+      MFS_DistPlus_switch_signal, 4;
+      MFS_DistReduce_switch_signal, 6;
+      MFS_ACC_switch_signal, 8;
+      R_LB                , 10;
+      MFS_LIN_2_Error     , 15;
+      MFS_RPressSignal1   , 16;
+      MFS_RPressSignal2   , 28;
+      MFS_RPressSignal3   , 40;
+      R_Rolling           , 52;
+      R_Checksum          , 56;
+   }
+   TestFrame2          : 0x11, MFS_Right           ,    8 {
+      R_BYTE1             , 0;
+      R_BYTE2             , 8;
+      R_BYTE3             , 16;
+      R_BYTE4             , 24;
+      R_BYTE5             , 32;
+      R_BYTE6             , 40;
+      R_BYTE7             , 48;
+      R_BYTE8             , 56;
+   }
+   GW_LIN              : 0x0A, GW                  ,    8 {
+      GW_Backlight        , 8;
+      GW_BYTE1            , 16;
+      GW_BYTE2            , 24;
+      GW_BYTE3            , 32;
+      GW_BYTE4            , 40;
+      GW_BYTE5            , 48;
+      GW_BYTE6            , 56;
+   }
+}
+/* ----------DIAGNOSTIC FRAME DEFINITIONS---------- */
+Diagnostic_frames {
+   MasterReq           : 0x3C {
+      MasterReqB0         , 0;
+      MasterReqB1         , 8;
+      MasterReqB2         , 16;
+      MasterReqB3         , 24;
+      MasterReqB4         , 32;
+      MasterReqB5         , 40;
+      MasterReqB6         , 48;
+      MasterReqB7         , 56;
+   }
+   SlaveResp           : 0x3D {
+      SlaveRespB0         , 0;
+      SlaveRespB1         , 8;
+      SlaveRespB2         , 16;
+      SlaveRespB3         , 24;
+      SlaveRespB4         , 32;
+      SlaveRespB5         , 40;
+      SlaveRespB6         , 48;
+      SlaveRespB7         , 56;
+   }
+}
+/* ----------NODE ATTRIBUTE DEFINITIONS---------- */
+Node_attributes {
+   MFS_Left {
+      LIN_protocol               = "2.1";                    /* Node protocol version */
+      configured_NAD             = 0x20;                     /* configured NAD of node */
+      initial_NAD                = 0x20;                     /* initial NAD of node */
+      product_id                 = 0x00, 0x00, 0x00;         /* Product id */
+      response_error             = MFS_LIN_1_Error;          /* Response error signal */
+      P2_min                     = 50 ms;                    /* P2_min */
+      ST_min                     = 0 ms;                     /* ST_min */
+      N_As_timeout               = 1000 ms;                  /* N_As_timeout */
+      N_Cr_timeout               = 1000 ms;                  /* N_As_timeout */
+      configurable_frames {
+         MFS_LIN_1;
+         TestFrame1;
+         MFS_LIN_2;
+         GW_LIN;
+      }
+   }
+   MFS_Right {
+      LIN_protocol               = "2.1";                    /* Node protocol version */
+      configured_NAD             = 0x21;                     /* configured NAD of node */
+      initial_NAD                = 0x21;                     /* initial NAD of node */
+      product_id                 = 0x00, 0x00, 0xFF;         /* Product id */
+      response_error             = MFS_LIN_2_Error;          /* Response error signal */
+      P2_min                     = 50 ms;                    /* P2_min */
+      ST_min                     = 0 ms;                     /* ST_min */
+      N_As_timeout               = 1000 ms;                  /* N_As_timeout */
+      N_Cr_timeout               = 1000 ms;                  /* N_As_timeout */
+      configurable_frames {
+         MFS_LIN_1;
+         MFS_LIN_2;
+         TestFrame2;
+         GW_LIN;
+      }
+   }
+}
+/* ----------SCHEDULE TABLE DEFINITIONS---------- */
+Schedule_tables {
+   Dynamic {
+      GW_LIN                                             delay 10 ms;
+      MFS_LIN_1                                          delay 10 ms;
+      MFS_LIN_2                                          delay 10 ms;
+      TestFrame1                                         delay 10 ms;
+      TestFrame2                                         delay 10 ms;
+   }
+   Diagnose {
+      MasterReq                                          delay 10 ms;
+      SlaveResp                                          delay 10 ms;
+      FreeFormat {0, 0, 0, 0, 0, 0, 0, 0}                delay 50 ms;
+   }
+}
+

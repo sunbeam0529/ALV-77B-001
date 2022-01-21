@@ -7,7 +7,7 @@
 **     Version     : Component 01.197, Driver 01.00, CPU db: 3.00.000
 **     Datasheet   : S32K1XXRM Rev. 6, 12/2017
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2021-12-11, 09:01, # CodeGen: 28
+**     Date/Time   : 2021-12-18, 09:57, # CodeGen: 31
 **     Abstract    :
 **
 **     Settings    :
@@ -67,6 +67,8 @@
 #include "flexio_i2c_driver.h"
 #include "lptmr_driver.h"
 #include "wdog_driver.h"
+#include "lin_driver.h"
+#include "lin_common_api.h"
 #include "system_S32K116.h"
 
 /* Including needed modules to compile this module/procedure */
@@ -79,6 +81,8 @@
 #include "flexio_i2c1.h"
 #include "lpTmr1.h"
 #include "watchdog1.h"
+#include "lin_cfg.h"
+#include "lin1.h"
 
 #ifdef __cplusplus
 extern "C" {

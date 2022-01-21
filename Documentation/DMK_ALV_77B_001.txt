@@ -236,6 +236,8 @@ Module "watchdog1" (component wdog)
                 should set this field to 0x01U in order to indicate that the WDOG is functioning normally.
    - watchdog1_WDOG_DRV_GetTestMode -This function verifies the test mode of the WDOG.
 
+Module "lin_cfg"   (component LinStack)
+
 Module "Cpu"       (component S32K116_48)
    - Cpu_SystemInit -This function disables the watchdog, enables FPU and the power mode protection. SystemInit is called from 
                 startup_device file.

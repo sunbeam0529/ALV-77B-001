@@ -712,11 +712,6 @@ void ElecScanCPU(uint8_t electrodeNum, uint8_t samplingCtrl)
 	// Electrode capacitance to voltage conversion
 	for (sampleNum = 0; sampleNum < (NUMBER_OF_PRESAMPLES + elecNumberOfSamples[electrodeNum]); sampleNum++)
 	{
-		if (samplingCtrl == 0)
-		{
-		while((LPIT0->MSR & LPIT_MSR_TIF0_MASK)!= 1){} // timeout?
-		LPIT0->MSR = (1 << 0); // Clear LPIT CH0 timer flag
-		}
 		// Distribute Electrode and Cext charge
 		ChargeDistribution(&elecStruct[electrodeNum]);
 		// Delay to distribute charge
@@ -913,35 +908,8 @@ void ElecRawDataCalc(uint8_t electrodeNum)
 			//FilterWeightedMean(buttonSamplesBuffer[electrodeNum - firstButtonElecNum], NUMBER_OF_PRESAMPLES + elecNumberOfSamples[electrodeNum], 7, elecDCTracker[electrodeNum]/(elecNumberOfSamples[electrodeNum]));
 		}
 #endif
-#if (NUMBER_OF_SLIDER_ELECTRODES > 0)
-		if (elecStruct[electrodeNum].type == SLIDER)
-		{
 
-#if FILTER_MEDIAN
-			// Median filtering of the samples
-			FilterMedian(sliderSamplesBuffer[electrodeNum - firstSliderElecNum], NUMBER_OF_PRESAMPLES + elecNumberOfSamples[electrodeNum],FilterMedianWindow[electrodeNum]);
-#endif
-#if FILTER_MEAN
-			// Mean filtering of the samples
-			FilterMean(sliderSamplesBuffer[electrodeNum - firstSliderElecNum], NUMBER_OF_PRESAMPLES + elecNumberOfSamples[electrodeNum],FilterMeanWindow[electrodeNum]);
-#endif
-			//FilterWeightedMean(sliderSamplesBuffer[electrodeNum - firstSliderElecNum], NUMBER_OF_PRESAMPLES + elecNumberOfSamples[electrodeNum], 7, elecDCTracker[electrodeNum]/(elecNumberOfSamples[electrodeNum]));
-		}
-#endif
-#if (NUMBER_OF_WAKEUP_ELECTRODES > 0)
-		if (elecStruct[electrodeNum].type == WAKEUP)
-		{
-#if FILTER_MEDIAN
-			// Median filtering of the samples
-			FilterMedian(wakeupSamplesBuffer[electrodeNum - firstWakeupElecNum], NUMBER_OF_PRESAMPLES + elecNumberOfSamples[electrodeNum],FilterMedianWindow[electrodeNum]);
-#endif
-#if FILTER_MEAN
-			// Mean filtering of the samples
-			FilterMean(wakeupSamplesBuffer[electrodeNum - firstWakeupElecNum], NUMBER_OF_PRESAMPLES + elecNumberOfSamples[electrodeNum],FilterMeanWindow[electrodeNum]);
-#endif
-			//FilterWeightedMean(wakeupSamplesBuffer[electrodeNum - firstWakeupElecNum], NUMBER_OF_PRESAMPLES + elecNumberOfSamples[electrodeNum], 7, elecDCTracker[electrodeNum]/(elecNumberOfSamples[electrodeNum]));
-		}
-#endif
+
 
 	}
 
@@ -1005,64 +973,23 @@ void FilterIIR1BufferChange(uint8_t electrodeNum, uint8_t changeType, uint8_t fr
  *****************************************************************************/
 void ElectrodesSelfTrimSense(void)
 {
-#ifdef DEBUG_ELECTRODE_SENSE
-	// Pin set
-	DES_GPIO->PSOR = 1 << DES_PIN;
-#endif
 
 	// Configure all electrodes floating
 	ElectrodesFloat();
 
 #if (NUMBER_OF_ELECTRODES > 0)
-#if (TS_ELECTRODE_DATA_ACQUISITION == DMA_ELECTRODE_DATA_ACQUISITION)
-	// Save first electrode number of the dma scanning sequence in the global variable (needed for DMA interrupt data sorting)
-	dmaSeqScanFirstElec = 0;
-	// Save last electrode electrode number of the dma scanning sequence in the global variable (needed for DMA interrupt data sorting)
-	dmaSeqScanLastElec = NUMBER_OF_ELECTRODES - 1;
-	if (dmaSeqScanFirstElec <= dmaSeqScanLastElec) // Sequence direction check
-	{
-		// Convert all electrodes (including wakeup elec) capacitance to equivalent voltage by DMA
-		ElectrodesSequenceScanDMA(dmaSeqScanFirstElec, dmaSeqScanLastElec);
-	}
-
-#else
 	// Decide sample control
 	uint8_t sampleControl = SmplCtrl();
 
-#if FREQUENCY_HOPPING
-	if (sampleControl == 0)
-	{
-	LPIT_Enable(0, freqencyIDtimeout[frequencyID]*lpit_clock);
-	}
-#endif
 	// All electrodes (including wakeup elec)
 	for(elecNum = 0; elecNum < NUMBER_OF_ELECTRODES; elecNum++)
 	{
-		if (elecStruct[elecNum].type != SLIDER) // Button or wakeup electrode?
-		{
-			// Convert electrode capacitance to equivalent voltage by CPU
-			ElecScanCPU(elecNum, sampleControl);
-		}
+        ElecScanCPU(elecNum, sampleControl);
 
-		else // Slider electrode
-		{
-			// Convert electrode capacitance to equivalent voltage by CPU
-			ElecScanCPU(elecNum, sampleControl);
-
-			// Convert electrode capacitance to equivalent voltage by CPU
-			// ElecSlider2PadsScanCPU(elecNum, sampleControl);
-		}
 	}
-#if FREQUENCY_HOPPING
-	LPIT_Disable(0);
-#endif
+
 	// Set the raw data flag
 	samplesReadyFlag = 1;
-#endif
-#ifdef DEBUG_ELECTRODE_SENSE
-			// Pin clear
-			DES_GPIO->PCOR = 1 << DES_PIN;
-#endif
 #endif
 }
 
@@ -1917,35 +1844,11 @@ void ElectrodesScanLPTMRHandlerRoutine(void)
 	// Clear scanning (DMA) idle flag
 	scanningIdleFlag = 0;
 
-#if(DECIMATION_FILTER != 1)
-	// Clear TCF LPTMR
-	LPTMR0->CSR |= 1 << 7;
-#endif
-
-#if JITTERING
-	// Delay the electrodes sense period
-	Jitter();
-#endif
-
 	// Electrodes self-trim done?
 	if(electrodesSelfTrimDoneFlag == 1)
 	{
-#if (NUMBER_OF_WAKEUP_ELECTRODES > 0)
-		// Wake-up electrode touched?
-		if (proximityDetectedFlag == 1)
-		{
-			// Sense all touch electrodes
-			ElectrodesTouchElecSense();
-		}
-		else
-		{
-			// Sense wake up electrode for wake up event plus sense one more touch electrode to keep track of baselines
-			ElectrodesWakeupEventSense();
-		}
-#else // EGS not used
 		// Sense all touch electrodes
 		ElectrodesTouchElecSense();
-#endif
 
 	}
 	else
@@ -1954,11 +1857,7 @@ void ElectrodesScanLPTMRHandlerRoutine(void)
 		ElectrodesSelfTrimSense();
 
 	}
-#if DECIMATION_FILTER
-	// Clear TCF LPTMR
-	//REG_RMW32(&LPTMR0->CSR, 1 << 7, 1 << 7);
-	LPTMR0->CSR |= 1 << 7;
-#endif
+
 }
 
 /*****************************************************************************

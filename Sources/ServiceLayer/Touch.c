@@ -32,7 +32,7 @@ extern uint8_t   elecNum;
 extern uint8_t   sliderElectrodeTouchQualified;
 extern uint8_t samplesReadyFlag, proximityDetectedFlag, electrodesSelfTrimDoneFlag;
 extern uint8_t  frequencyID;
-uint8_t keysignal[8];
+uint8_t keysignal[8],keypress[8];
 uint8_t TouchDetectDoneFlag=0;
 uint8_t TouchKeyALL;
 uint32_t TouchSensorSignalValue[NUMBER_OF_ELECTRODES];
@@ -45,6 +45,7 @@ uint8_t release_start;
 uint8_t touch_count=0;
 
 uint8_t TouchRatioArr[8] = {10,10,10,10,10,10,10,10};
+uint8_t TouchReleaseDelay[8]={0};
 
 uint32_t SliderFilter(uint32_t newdata)
 {
@@ -106,7 +107,6 @@ void TouchDetect(void)
 				// Process all touch electrodes raw data
 				ElectrodesTouchElecProcess();
 				// Check for virtual wake up event
-				ElectrodesVirtualWakeupEventCtrl();
 				// Data have been processed, continue
 				samplesReadyFlag = 0;
 
@@ -143,8 +143,8 @@ void TouchProcess(void)
 {
     static uint8_t keypresslast,pressflag,slideflag,releaseflag=1,slider_delay=0;
     static uint32_t lastlocation;
-    //uint16_t press,preload;
     volatile uint32_t location;
+    uint8_t keysum=0,keynum=0;
     if(TouchDetectDoneFlag == 1)
     {
 
@@ -175,158 +175,89 @@ void TouchProcess(void)
                 TouchSensorSignalValue[elecNum] = 0;
             }
         }
-        if(TouchKeyALL == 0)
+
+        //l_u8_wr_LI0_L_BYTE1(TouchKeyALL);//
+		l_u8_wr_LI0_L_BYTE2((TouchSensorSignalValue[1]>>2)<255?TouchSensorSignalValue[1]>>2:255);//UP
+		l_u8_wr_LI0_L_BYTE3((TouchSensorSignalValue[2]>>2)<255?TouchSensorSignalValue[2]>>2:255);//LEFT
+		l_u8_wr_LI0_L_BYTE4((TouchSensorSignalValue[3]>>2)<255?TouchSensorSignalValue[3]>>2:255);//OK
+		l_u8_wr_LI0_L_BYTE5((TouchSensorSignalValue[4]>>2)<255?TouchSensorSignalValue[4]>>2:255);//RIGHT
+		l_u8_wr_LI0_L_BYTE6((TouchSensorSignalValue[5]>>2)<255?TouchSensorSignalValue[5]>>2:255);//DOWN
+		l_u8_wr_LI0_L_BYTE7((TouchSensorSignalValue[6]>>2)<255?TouchSensorSignalValue[6]>>2:255);//LB
+		l_u8_wr_LI0_L_BYTE8((TouchSensorSignalValue[7]>>2)<255?TouchSensorSignalValue[7]>>2:255);
+
+        if(pressflag == 0)
         {
-            PINS_DRV_WritePin(PTE,9,0);
-        }
-        else
-        {
-            PINS_DRV_WritePin(PTE,9,1);
-        }
-        if(keypresslast != (TouchKeyALL?1:0))
-        {
-            keypresslast = (TouchKeyALL?1:0);
-            if(keypresslast == 1)
+            //keypress[0] = keysignal[0];
+            keypress[1] = keysignal[1];
+            keypress[2] = keysignal[2];
+            keypress[3] = keysignal[3];
+            keypress[4] = keysignal[4];
+            keypress[5] = keysignal[5];
+            keypress[6] = keysignal[6];
+
+            keysum = 0;
+            for (uint8_t i = 1; i < 7; i++)
             {
-                //MotorEnable();
+                if (keypress[i] == 1)
+                {
+                    keysum++;
+                    keynum = i;
+                }
             }
-        }
-
-        if((TouchKeyALL&0xf8) != 0 && pressflag == 0 && press > LIN_PressTH && slideflag == 0)
-        {
-            pressflag = 1;
-            //MotorEnable();
-            releaseflag = 0;
-        }
-        if((TouchKeyALL&0x05) != 0 && pressflag == 0 && press > (LIN_PressTH) && slideflag == 0)
-		{
-			pressflag = 1;
-			//MotorEnable();
-			releaseflag = 0;
-		}
-
-        if(press < (LIN_PressTH>>2) || press < 20)
-        {
-        	if(releaseflag == 0)
-        	{
-        		releaseflag = 1;
-
-        		//MotorEnableRelease();
-        	}
-        	if(TouchKeyALL == 0)
-            	pressflag = 0;
-        }
-
-        location = ((TouchSensorSignalValue[0]*2 + TouchSensorSignalValue[1])*50)/(TouchSensorSignalValue[0]+TouchSensorSignalValue[1]+TouchSensorSignalValue[2]);
-        
+            if (keysum == 1 && press > 100)
+            {
+                pressflag = 1;
+                StartWave();
+                l_u8_wr_LI0_L_BYTE1(keynum);
+                switch (keynum)
+                {
+                case 0:
+                    
+                break;
+                case 1:
+                    l_u8_wr_LI0_MFS_UP_switch_signal(1);
+                break;
+                case 2:
+                    l_u8_wr_LI0_MFS_LEFT_switch_signal(1);
+                break;
+                case 3:
+                    l_u8_wr_LI0_MFS_OK_switch_signal(1);
+                break;
+                case 4:
+                    l_u8_wr_LI0_MFS_RIGHT_switch_signal(1);
+                break;
+                case 5:
+                    l_u8_wr_LI0_MFS_DOWN_switch_signal(1);
+                break;
+                case 6:
+                    l_u8_wr_LI0_L_LB(1);
+                break;
+                default:
+                    break;
+                }
+            }
             
-        location = SliderFilter(location);
-        if(keysignal[0] == 0 && keysignal[1] == 0 && keysignal[2] == 0)
-        {
-            location = 0;
-            slideflag = 0;
-        }       
+        }
         else
         {
-        	SliderDelayCounter = 20;
-        }
-
-
-        if(lastlocation != location)
-        {
-            if(lastlocation == 0)
+            for (uint8_t i = 0; i < 8; i++)
             {
-                //if(pressflag == 0)
-                	//MotorEnableSlider();
-                lastlocation = location;
+                if (keysignal[i] == 1)
+                {
+                    keysum++;
+                    keynum = i;
+                }
             }
-            else if(location < 30)
+            if(keysum == 0 && press < 50)
             {
-                    lastlocation = location;
-                    //MotorDisable();
-            }	
-            else if( (lastlocation > location+30) || (lastlocation < location-30))
-            {
-                SliderDelayCounter = 20;
-                slideflag = 1;
-                if(lastlocation > location+30)
-                {
-                	if(SliderDir > 0)
-                		SliderDir--;
-                }
-                else
-                {
-                    if(SliderDir < 10)
-                    	SliderDir++;
-                }
-                
-                lastlocation = location;
-                //if(pressflag == 0 && press > (LIN_PressTH>>4))
-                	//MotorEnableSlider();
-            }	  
-                      
-        }                                                                                                                                                               
-        if(keysignal[3]== 1 && press > LIN_PressTH)
-        {
-            key_OK = 1;
+                pressflag = 0;
+                l_u8_wr_LI0_MFS_UP_switch_signal(0);
+                l_u8_wr_LI0_MFS_LEFT_switch_signal(0);
+                l_u8_wr_LI0_MFS_OK_switch_signal(0);
+                l_u8_wr_LI0_MFS_RIGHT_switch_signal(0);
+                l_u8_wr_LI0_MFS_DOWN_switch_signal(0);
+                l_u8_wr_LI0_L_LB(0);
+            }
         }
-        else if(keysignal[3] == 0)
-        {
-            key_OK = 0;
-        }
-        if(keysignal[4]== 1 && press > LIN_PressTH)
-        {
-            key_DOWN = 1;
-        }
-        else if(keysignal[4] == 0)
-        {
-            key_DOWN = 0;
-        }
-
-        if(keysignal[5]== 1 && press > LIN_PressTH)
-        {
-            key_UP = 1;
-        }
-        else if(keysignal[5] == 0)
-        {
-            key_UP = 0;
-        }
-
-        if(keysignal[6]== 1 && press > LIN_PressTH)
-        {
-            key_PHONE = 1;
-
-        }
-        else if(keysignal[6] == 0)
-        {
-            key_PHONE = 0;
-        }
-
-        if(keysignal[7]== 1 && press > LIN_PressTH)
-        {
-            key_RETURN = 1;
-        }
-        else if(keysignal[7] == 0)
-        {
-            key_RETURN = 0;
-        }
-        if(keysignal[0]== 1 && press > (LIN_PressTH/2))
-		{
-        	key_volplus = 1;
-		}
-		else if(keysignal[0] == 0)
-		{
-			key_volplus = 0;
-		}
-
-		if(keysignal[2]== 1 && press > (LIN_PressTH/2))
-		{
-			key_volminus = 1;
-		}
-		else if(keysignal[2] == 0)
-		{
-			key_volminus = 0;
-		}
-
     }
 }

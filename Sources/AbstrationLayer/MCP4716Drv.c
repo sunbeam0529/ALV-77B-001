@@ -48,12 +48,12 @@ void PlaySineWave(void)
         return;
     }
     
-    val = (uint32_t)32768 + wavedata1[wavecount];
+    val = (uint32_t)32768 + wavedata2[wavecount];// wavedata1/2/3  1:振动 2:声音 3:正弦
     val >>= 6;
     DAC_Write_VolatileRegVal(val);
 
     wavecount++;
-    if (wavecount >= NUM_ELEMENTS)
+    if (wavecount >= WAVE2_NUM_ELEMENTS)// WAVE1/2/3_NUM_ELEMENTS 1:振动 2:声音 3:正弦
     {
         wavecount = 0;
         wavecycle++;
@@ -65,6 +65,10 @@ void PlaySineWave(void)
         }
     }
     
+}
+uint8_t GetMotorState(void)
+{
+    return WaveEnable;
 }
 
 void StartWave(void)

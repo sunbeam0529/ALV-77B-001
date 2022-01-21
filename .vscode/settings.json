@@ -6,6 +6,9 @@
         "clock.h": "c",
         "devassert.h": "c",
         "sw_i2c.h": "c",
-        "pindef.h": "c"
+        "pindef.h": "c",
+        "16bit_signed_open1.h": "c",
+        "touch.h": "c",
+        "lin_commontl_api.h": "c"
     }
 }
